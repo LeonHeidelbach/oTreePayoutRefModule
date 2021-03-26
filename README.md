@@ -36,5 +36,5 @@ This app offers a simple way to connect the experiments to the DICE payment plat
 ![admin-report](docs/images/page.PNG)
 
 # Requirements
-* otree<5
-  * Note that we provide a version for otree>5 in another branch
+* otree>5
+  * Note that we provide a version for otree<5 in another branch
