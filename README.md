@@ -1,40 +1,40 @@
-# oTree module for the DICE payment platform
+# oTree payment app for the DICE payment platform
 
-This module can be used in any oTree experiment project to generate individual payment URLs for the DICE-Lab payment platform.
+This app offers a simple way to connect the experiments to the DICE payment platform. 
 
-* The following information can/must be included in the generated URL:
-    * Experiment short name **(optional)**
-    * Experiment ID (can be found either on the experiment page within ORSEE or the payment platform)
-    * Participant ID (encrypted participant ID as supplied with the "participant_label" variable) **(optional)**
-    * Payout amount (the amount earned by the participant) **(optional)**
+# Getting started
 
-# How to implement the module
+* Place the app in your oTree folder and add it to the app_sequence of your session in settings.py
+  ```python
+    app_sequence = ['some_app_1', 'some_app_2', 'payment']
+  ```
+* Add the *expId* and *expShortName* to your session settings
+  * *expId*: Experiment short name from the payment platform
+  * *expShortName*: Experiment ID (can be found either on the experiment page within ORSEE or the payment platform)
+* Your SESSION_CONFIG should look something like this
+   ```python
+    SESSION_CONFIGS = [
+    dict(
+       name='example_session',
+       display_name="example_session",
+       num_demo_participants=3,
+       expShortName="TestExp", # Replace with your values
+       expId=0000000000, # Replace with your values
+       app_sequence = ['some_app_1', 'some_app_2', 'payment']
+    )]  
+    ```
 
-The `"PayoutURLGenerator"` class creates all parts of the payment URL separately and combines them into a URL-String.
+# Usage
 
-There are two options to create a payment URL: 
-1. Instantiate a `"PayoutURLGenerator"` object and pass the necessary variable details directly to the constructor method.
-2. Instantiate a `"PayoutURLGenerator"` object and set the necessary variable details through usage of the setter methods. 
+* Upon creation of a session on the server, move to the *Report* Tab of the payment app and copy the URLs for the payment platform.
+![admin-report](docs/images/admin_report.PNG)
+* The correct participant label paramater will be automatically added to each URL by the payment platform after you assigned the URLs. 
+* If participants use those links passed via the payment platform to join the session, the participant label within oTree will correspond to their ORSEE-ID.
+* The participant label and the information added to the SESSION_CONFIG will be used to create a participant specific link to the payment platform 
+    * Note: Always use the player and participant payoff-field of oTree to store any payments participants receive within your experiment.
+* On the last page of the experiment participant will then see their final payoff in the specified real world currency and a button that links to receive their payoff  
+![admin-report](docs/images/page.PNG)
 
-Both options can be used in conjunction when creating a list of multiple payout URLs for the same experiment and only the participant id and the payout amount are subject to change.
-
-Calling the `getPayoutURL` method on the instantiated object returns the constructed URL string using the current instance parameters.
-
-```python
-##  0 -> Placeholder for any integer
-## "X" -> Placeholder for any string
-
-# Method 1.
-paymentURLGenerator = PayoutURLGenerator()
-paymentURLGenerator.setExpShortName("TestExp")
-paymentURLGenerator.setExpId(0000000000)
-paymentURLGenerator.setPid("XXXXXXXXXXXXXXX")
-paymentURLGenerator.setPayout(10.10)
-paymentURL = paymentURLGenerator.getPayoutURL()
-
-# Method 2.
-paymentURL = PayoutURLGenerator("TestExp",0000000000,000000000000000,10.10).getPayoutURL()
-
-# Method 3.
-paymentURL = PayoutURLGenerator("TestExp","0000000000","XXXXXXXXXXXXXXX",10.10).getPayoutURL()
-```
+# Requirements
+* otree<5
+  * Note that we provide a version for otree>5 in another branch

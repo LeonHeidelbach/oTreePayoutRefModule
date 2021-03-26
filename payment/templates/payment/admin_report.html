@@ -1,0 +1,11 @@
+
+<h3> URLs for the payment platform</h3>
+
+<table>
+{% for url in urls_with_id %}
+    <tr>
+        <td> http://{{ request.get_host }}{{url}} </td>
+    </tr>
+{% endfor %}
+</table>
+

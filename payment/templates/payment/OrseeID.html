@@ -1,0 +1,17 @@
+{% extends "global/Page.html" %}
+
+{% load otree %}
+
+{% block title %}
+Ihre Teilnehmer-ID
+{% endblock %}
+{% block content %}
+<p>
+  Das Experiment endet jetzt. <b>Bitte geben Sie unten Ihre Teilnehmer-ID ein.</b> Diese finden Sie auf der Auszahlungseite
+  oder in der E-Mail-Einladung zu diesem Experiment. Bitte beachten Sie die Groß- und Kleinschreibung.
+</p>
+<p>
+  {% formfields %}
+</p>
+{% next_button %}
+{% endblock %}
