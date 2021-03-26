@@ -2,9 +2,9 @@
 <h3> URLs for the payment platform</h3>
 
 <table>
-{% for url in urls_with_id %}
+{% for u in urls_with_id %}
     <tr>
-        <td> http://{{ view.request.base_url }}{{url}} </td>
+        <td> {{ view.request.base_url }}{{u}} </td>
     </tr>
 {% endfor %}
 </table>
