@@ -4,7 +4,7 @@
 <table>
 {% for url in urls_with_id %}
     <tr>
-        <td> http://{{ request.get_host }}{{url}} </td>
+        <td> http://{{ view.request.base_url }}{{url}} </td>
     </tr>
 {% endfor %}
 </table>
