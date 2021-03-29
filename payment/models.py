@@ -37,10 +37,10 @@ class Subsession(BaseSubsession):
         participants = self.session.get_participants()
         # The base url added directly in template:
         # This is super hacky, but it seems that I cannot access the View for the Admin Page
-        # from oTree. Note that this part differs for otree<5 due to the swtich from django
+        # from oTree. Note that this part differs for otree>5 due to the swtich from django
         # to starlette.
         urls_with_id = [
-            p._start_url()[1:] + "/?participant_label=[TEILNEHMER-ID_EINFÜGEN]"
+            p._start_url() + "/?participant_label=[TEILNEHMER-ID_EINFÜGEN]"
             for p in participants
         ]
 

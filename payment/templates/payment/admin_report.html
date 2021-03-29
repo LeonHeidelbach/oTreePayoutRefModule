@@ -1,11 +1,20 @@
 
 <h3> URLs for the payment platform</h3>
 
-<table>
-{% for u in urls_with_id %}
-    <tr>
-        <td> {{ view.request.base_url }}{{u}} </td>
-    </tr>
-{% endfor %}
-</table>
 
+
+<script>
+  var urls_with_id = {{urls_with_id|safe}};
+  var originURL = window.location.origin;
+  var nParticipants = urls_with_id.length;
+  document.write("<table>");
+
+  for (var i = 0; i < nParticipants; i++) {
+      document.write("<tr>");
+      document.write("<td>" + originURL.concat(urls_with_id[i])+ "</td>");
+      document.write("</tr>");
+
+  }
+  document.write("</table>");
+
+</script>
