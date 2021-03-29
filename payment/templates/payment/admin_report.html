@@ -1,10 +1,9 @@
 
 <h3> URLs for the payment platform</h3>
-
-
+<div id="urlTable"></div>
 
 <script type="text/javascript">
-    var create_url_table = (function create_url_table(anchorNode=document.body) {
+    var create_url_table = (function create_url_table(anchorNode=document.getElementById("urlTable")) {
         const urls_with_id = {{urls_with_id|safe}};
         const tableRow = document.createElement('tr');
         const tableCol = document.createElement('td');
