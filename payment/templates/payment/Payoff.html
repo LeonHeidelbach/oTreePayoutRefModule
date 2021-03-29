@@ -1,0 +1,12 @@
+{% extends "global/Page.html" %}
+
+{% load otree %}
+
+{% block title %}
+Vielen Dank für Ihre Teilnahme
+{% endblock %}
+{% block content %}
+
+<h1>Das Experiment endet jetzt.  Ihr Auszahlung beträgt {{payoff_plus_participation_fee}}. Bitte klicken Sie hier um Ihre Auszahlung zu erhalten: </h1>
+<a href="{{paymentURL}}" class="btn btn-primary btn-block btn-lg" role="button">Zur Auszahlungsseite</a>
+{% endblock %}
