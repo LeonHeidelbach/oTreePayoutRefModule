@@ -3,18 +3,22 @@
 
 
 
-<script>
-  var urls_with_id = {{urls_with_id|safe}};
-  var originURL = window.location.origin;
-  var nParticipants = urls_with_id.length;
-  document.write("<table>");
+<script type="text/javascript">
+    var create_url_table = (function create_url_table(anchorNode=document.body) {
+        const urls_with_id = {{urls_with_id|safe}};
+        const tableRow = document.createElement('tr');
+        const tableCol = document.createElement('td');
+        const tableNode = document.createElement('table');
+        
+        tableRow.appendChild(tableCol);
+        
+        urls_with_id.forEach(uri => {
+            let row = tableRow.cloneNode(true);
+            row.firstChild.innerText = window.location.origin + uri;
+            tableNode.appendChild(row);
+        });
+        anchorNode.appendChild(tableNode);
 
-  for (var i = 0; i < nParticipants; i++) {
-      document.write("<tr>");
-      document.write("<td>" + originURL.concat(urls_with_id[i])+ "</td>");
-      document.write("</tr>");
-
-  }
-  document.write("</table>");
-
+        return create_url_table;
+    })();
 </script>
