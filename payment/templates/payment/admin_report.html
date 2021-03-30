@@ -1,11 +1,22 @@
-
 <h3> URLs for the payment platform</h3>
+<div id="urlTable"></div>
 
-<table>
-{% for url in urls_with_id %}
-    <tr>
-        <td> http://{{ request.get_host }}{{url}} </td>
-    </tr>
-{% endfor %}
-</table>
+<script type="text/javascript">
+    var create_url_table = (function create_url_table(selector,baseNode=document) {
+        const urls_with_id = {{urls_with_id|safe}};
+        const tableRow = document.createElement('tr');
+        const tableCol = document.createElement('td');
+        const tableNode = document.createElement('table');
+        
+        tableRow.appendChild(tableCol);
+        
+        urls_with_id.forEach(uri => {
+            let row = tableRow.cloneNode(true);
+            row.firstChild.innerText = window.location.origin + uri;
+            tableNode.appendChild(row);
+        });
+        baseNode?.querySelector(selector)?.appendChild(tableNode);
 
+        return create_url_table;
+    })('#urlTable');
+</script>
