@@ -3,20 +3,20 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
-class OrseeID(Page):
+class HrootID(Page):
     form_model = 'player'
-    form_fields = ['orsee_id']
+    form_fields = ['hroot_id']
 
     def is_displayed(self):
         # Page is only required if we did not use
-        # pass the orsee id via the participant label.
+        # pass the hroot id via the participant label.
         if self.participant.label is None:
             return True
         else:
-            self.player.orsee_id = self.participant.label
+            self.player.hroot_id = self.participant.label
 
     def before_next_page(self):
-        self.participant.label = self.player.orsee_id
+        self.participant.label = self.player.hroot_id
 
 
 class Payoff(Page):
@@ -27,4 +27,4 @@ class Payoff(Page):
         return context
 
 
-page_sequence = [OrseeID, Payoff]
+page_sequence = [HrootID, Payoff]

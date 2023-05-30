@@ -58,7 +58,7 @@ class Player(BasePlayer):
 
     # Required if the Hroot ID is not passed via the
     # participant label.
-    orsee_id = models.StringField(
+    hroot_id = models.StringField(
         label="Bitte geben Sie Ihre Teilnehmer-ID ein:")
 
     def create_paymentURL(self):
