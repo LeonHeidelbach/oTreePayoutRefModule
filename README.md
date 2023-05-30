@@ -9,8 +9,8 @@ This app offers a simple way to connect the experiments to the DICE payment plat
     app_sequence = ['some_app_1', 'some_app_2', 'payment']
   ```
 * Add the *expId* and *expShortName* to your session settings
-  * *expId*: Experiment short name from the payment platform
-  * *expShortName*: Experiment ID (can be found either on the experiment page within ORSEE or the payment platform)
+  * *expId*: Experiment ID (can be found either on the experiment page within ORSEE or the payment platform)
+  * *expShortName*: Experiment short name from the payment platform
 * Your SESSION_CONFIG should look something like this
    ```python
     SESSION_CONFIGS = [
