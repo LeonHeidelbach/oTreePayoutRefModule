@@ -14,7 +14,7 @@
 import base64
 import json
 
-DEFAULT_BASE_URL : str =  'https://www3.hhu.de/lab/dice.php'
+DEFAULT_BASE_URL : str =  'https://exppay.dice.hhu.de'
 DEFAULT_CURRVIEW : str = 'paymentdatasubmitform'
 
 class PayoutURLGenerator():
@@ -43,7 +43,7 @@ class PayoutURLGenerator():
             expId (int | str)   # The ORSEE experiment Id.
             pid (int | str)     # The ORSEE crypt participant Id.
             payout (float)      # The participant's payout amount for the current experiment. If no parameter is supplied, the payout parameter will be excluded from the url.
-            baseURL (str)       # The base URL to the payment platform. DEFAULT: "https://www3.hhu.de/lab/dice.php".
+            baseURL (str)       # The base URL to the payment platform. DEFAULT: "https://exppay.dice.hhu.de".
     '''
     
     # Public methods
