@@ -40,8 +40,8 @@ class PayoutURLGenerator():
         Parameters:
 
             expShortName (str)  # The short name for the experiment as displayed on the experiment/session page of the payment platform.
-            expId (int | str)   # The ORSEE experiment Id.
-            pid (int | str)     # The ORSEE crypt participant Id.
+            expId (int | str)   # The Hroot experiment Id.
+            pid (int | str)     # The Hroot crypt participant Id.
             payout (float)      # The participant's payout amount for the current experiment. If no parameter is supplied, the payout parameter will be excluded from the url.
             baseURL (str)       # The base URL to the payment platform. DEFAULT: "https://exppay.dice.hhu.de".
     '''

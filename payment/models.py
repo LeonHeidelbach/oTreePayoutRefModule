@@ -56,7 +56,7 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
 
-    # Required if the ORSEE ID is not passed via the
+    # Required if the Hroot ID is not passed via the
     # participant label.
     orsee_id = models.StringField(
         label="Bitte geben Sie Ihre Teilnehmer-ID ein:")

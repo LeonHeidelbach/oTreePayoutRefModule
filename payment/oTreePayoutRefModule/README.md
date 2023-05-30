@@ -4,7 +4,7 @@ This module can be used in any oTree experiment project to generate individual p
 
 * The following information can/must be included in the generated URL:
     * Experiment short name **(optional)**
-    * Experiment ID (can be found either on the experiment page within ORSEE or the payment platform)
+    * Experiment ID (can be found either on the experiment page within Hroot or the payment platform)
     * Participant ID (encrypted participant ID as supplied with the "participant_label" variable) **(optional)**
     * Payout amount (the amount earned by the participant) **(optional)**
 
