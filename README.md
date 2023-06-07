@@ -1,15 +1,21 @@
 # oTree payment app for the DICE payment platform
 
-This app offers a simple way to connect the experiments to the DICE payment platform. 
+This app offers a simple way to connect oTree experiments to the DICE payment platform. 
 
 # Getting started
 
-* Place the app in your oTree folder and add it to the app_sequence of your session in settings.py
+* Add this repository as a git submodule to your oTree project and name the directory "payment" by running the following commands in your oTree project's root directory.
+  ```console
+    $ git submodule add <repo_url> payment
+    $ git submodule update --init --recursive
+  ```
+* Add the payment app to the app_sequence in your settings.py
   ```python
     app_sequence = ['some_app_1', 'some_app_2', 'payment']
   ```
-* Add the *expId* and *expShortName* to your session settings
+* Add the *expId*, *sessId* and *expShortName* entries to your session settings
   * *expId*: Experiment ID (can be found either on the experiment page within Hroot or the payment platform)
+  * *sessId*: Session ID (can be found either on the experiment page within Hroot or the payment platform. **IMPORTANT:** This needs to be updated for each session. You can easily do this from the oTree web interface when creating a new session.)
   * *expShortName*: Experiment short name from the payment platform
 * Your SESSION_CONFIG should look something like this
    ```python
@@ -20,6 +26,7 @@ This app offers a simple way to connect the experiments to the DICE payment plat
        num_demo_participants=3,
        expShortName="TestExp", # Replace with your values
        expId=0000000000, # Replace with your values
+       sessId=0000000000, # Replace with your values
        app_sequence = ['some_app_1', 'some_app_2', 'payment']
     )]  
     ```
