@@ -27,20 +27,22 @@ class PayoutURLGenerator():
             paymentURLGenerator = PayoutURLGenerator()
             paymentURLGenerator.setExpShortName("TestExp")
             paymentURLGenerator.setExpId(0000000000)
+            paymentURLGenerator.setSessId(0000000000)
             paymentURLGenerator.setPid("XXXXXXXXXXXXXXX")
             paymentURLGenerator.setPayout(10.10)
             paymentURL = paymentURLGenerator.getPayoutURL()
 
             # Method 2.
-            paymentURL = PayoutURLGenerator("TestExp",0000000000,"XXXXXXXXXXXXXXX",10.10).getPayoutURL()
+            paymentURL = PayoutURLGenerator("TestExp",0000000000,0000000000,"XXXXXXXXXXXXXXX",10.10).getPayoutURL()
         
             # Method 3.
-            paymentURL = PayoutURLGenerator("TestExp","0000000000","XXXXXXXXXXXXXXX",10.10).getPayoutURL()
+            paymentURL = PayoutURLGenerator("TestExp","0000000000","0000000000","XXXXXXXXXXXXXXX",10.10).getPayoutURL()
 
         Parameters:
 
             expShortName (str)  # The short name for the experiment as displayed on the experiment/session page of the payment platform.
             expId (int | str)   # The Hroot experiment Id.
+            sessId (int | str)  # The Hroot session Id.
             pid (int | str)     # The Hroot crypt participant Id.
             payout (float)      # The participant's payout amount for the current experiment. If no parameter is supplied, the payout parameter will be excluded from the url.
             baseURL (str)       # The base URL to the payment platform. DEFAULT: "https://exppay.dice.hhu.de".
@@ -48,13 +50,15 @@ class PayoutURLGenerator():
     
     # Public methods
 
-    def __init__(self, expShortName : str = None, expId : str = None, pid : str = None, payout : float = None, baseURL : str = DEFAULT_BASE_URL):
+    def __init__(self, expShortName : str | None = None, sessId : str | int | None = None, expId : str | int
+        | None = None, pid : str | int | None  = None, payout : float = 0, baseURL : str = DEFAULT_BASE_URL):
         self.expShortName = expShortName
         self.expId : str = str(expId)
+        self.sessId : str = str(sessId)
         self.pid : str = str(pid)
         self.payout : float = payout
         self.baseURL : str = baseURL
-        self.payoutURL : str = None
+        self.payoutURL : str = ""
         self.currView : str = DEFAULT_CURRVIEW
 
     ## Getter methods
@@ -83,11 +87,15 @@ class PayoutURLGenerator():
         '''Set the experiment short name parameter for the url generator'''
         self.expShortName = expShortName
     
-    def setExpId(self, expId : any) -> None:
+    def setExpId(self, expId : str | int) -> None:
         '''Set the expId parameter for the url generator'''
         self.expId = str(expId)
+
+    def setSessId(self, sessId : str | int) -> None:
+        '''Set the sessId parameter for the url generator'''
+        self.sessId = str(sessId)
     
-    def setPid(self, pid : any) -> None:
+    def setPid(self, pid :  str | int) -> None:
         '''Set the pid parameter for the url generator'''
         self.pid = str(pid)
     
@@ -114,6 +122,7 @@ class PayoutURLGenerator():
             "expData" : [
                 {
                     "id" : self.expId,
+                    "sid": self.sessId,
                     "name" : self.expShortName,
                 }
             ],

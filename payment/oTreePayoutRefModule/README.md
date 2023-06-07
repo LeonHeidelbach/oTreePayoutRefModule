@@ -28,13 +28,14 @@ Calling the `getPayoutURL` method on the instantiated object returns the constru
 paymentURLGenerator = PayoutURLGenerator()
 paymentURLGenerator.setExpShortName("TestExp")
 paymentURLGenerator.setExpId(0000000000)
+paymentURLGenerator.setSessId(0000000000)
 paymentURLGenerator.setPid("XXXXXXXXXXXXXXX")
 paymentURLGenerator.setPayout(10.10)
 paymentURL = paymentURLGenerator.getPayoutURL()
 
 # Method 2.
-paymentURL = PayoutURLGenerator("TestExp",0000000000,000000000000000,10.10).getPayoutURL()
+paymentURL = PayoutURLGenerator("TestExp",0000000000,0000000000,"XXXXXXXXXXXXXXX",10.10).getPayoutURL()
 
 # Method 3.
-paymentURL = PayoutURLGenerator("TestExp","0000000000","XXXXXXXXXXXXXXX",10.10).getPayoutURL()
+paymentURL = PayoutURLGenerator("TestExp","0000000000","0000000000","XXXXXXXXXXXXXXX",10.10).getPayoutURL()
 ```

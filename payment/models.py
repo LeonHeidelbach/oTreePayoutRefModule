@@ -27,7 +27,7 @@ class Constants(BaseConstants):
 class Subsession(BaseSubsession):
     def creating_session(self):
         # Check for payment keys
-        payment_keys = ['expId', 'expShortName']
+        payment_keys = ['expId', 'sessId', 'expShortName']
         for k in payment_keys:
             if k not in self.session.config.keys(
             ) or self.session.config[k] is None:
@@ -68,10 +68,12 @@ class Player(BasePlayer):
         """
         expShortName = self.session.config['expShortName']
         expId = self.session.config['expId']
+        sessId = self.session.config['sessId']
         pid = self.participant.label
         final_payoff = float(self.participant.payoff_plus_participation_fee())
         paymentURL = PayoutURLGenerator(expShortName,
                                         expId,
+                                        sessId,
                                         pid,
                                         final_payoff).getPayoutURL()
         return paymentURL
