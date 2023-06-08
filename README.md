@@ -43,5 +43,6 @@ This app offers a simple way to connect oTree experiments to the DICE payment pl
 ![admin-report](docs/images/page.PNG)
 
 # Requirements
+* python>=3.10
 * otree>5 or otree<5
 * Tested with otree==3.3.11 and otree==5.1.1

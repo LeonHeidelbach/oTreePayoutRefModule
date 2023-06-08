@@ -1,5 +1,5 @@
 ﻿#------------------------------------------------------------------------------------------------#
-#  Payout URL Generator --- To be used with oTree --- Tested using Python 3.9.2
+#  Payout URL Generator --- To be used with oTree --- Tested using Python 3.10.6
 #------------------------------------------------------------------------------------------------#
 #  payout_url_generator.py
 #  DICE-Lab Payment Platform
