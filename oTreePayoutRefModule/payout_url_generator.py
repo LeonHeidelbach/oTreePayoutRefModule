@@ -65,7 +65,6 @@ class PayoutURLGenerator():
 
     def getPayoutURL(self) -> str:
         '''Returns the payout url for the initialized parameters.'''
-        expBase64DictStr : str = self.__encodeBase64(json.dumps(self.__createExpDict()))
         self.payoutURL = f'{self.baseURL}?{self.getCurrViewParam()}&{self.getPidParam()}&{self.getExpIdParam()}'
         return self.payoutURL
     
