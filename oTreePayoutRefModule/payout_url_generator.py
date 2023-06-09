@@ -50,8 +50,8 @@ class PayoutURLGenerator():
     
     # Public methods
 
-    def __init__(self, expShortName : str | None = None, sessId : str | int | None = None, expId : str | int
-        | None = None, pid : str | int | None  = None, payout : float = 0, baseURL : str = DEFAULT_BASE_URL):
+    def __init__(self, expShortName : str | None = None, expId : str | int | None = None,
+             sessId : str | int | None = None,  pid : str | int | None  = None, payout : float = 0, baseURL : str = DEFAULT_BASE_URL):
         self.expShortName = expShortName
         self.expId : str = str(expId)
         self.sessId : str = str(sessId)
